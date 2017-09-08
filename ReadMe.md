@@ -79,7 +79,6 @@ application can integrate stat module by follow directions
         sync.RWMutex
         Filename   string `json:"filename"`
         BlankPrefix      bool `json:"blankprefix"`
-        ......
     }
 ```
 ####FileWriter Default BlankPrefix Support
