@@ -171,7 +171,7 @@ Remove the logger level prefix in log line,such as [I],[D],...
         bl.blankPrefix = true
     }
 ```
-<br>
+
 #### BeeLogger WriteMsg Modify
    
    clause msg = levelPrefix[logLevel] + msg add condition
@@ -263,7 +263,7 @@ Remove the logger level prefix in log line,such as [I],[D],...
     )
 ```
 ### User How to Add Stat Options
-   <br>
+   
    user can add user define option and call interface below to tag itemName to Stat Module
  ```golang
 	AddReportHeadItem(itemName string)
