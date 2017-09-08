@@ -214,7 +214,7 @@ Remove the logger level prefix in log line,such as [I],[D],...
 ## Using Help
 
 ### Base Initialize
-<br>
+
 ```golang
 	logconfig := make(stat.LoggerParm)
 	logconfig.level = "info"
