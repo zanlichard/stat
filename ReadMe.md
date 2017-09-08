@@ -1,10 +1,9 @@
 # Stat Manuals
-About
-====
+## About
+
 	golang application local business monitor
 	application can integrate stat module by follow directions
-Stat Log Style
------
+### Stat Log Style
   <br>
   Statistic in 60s,  CTime: 2017-09-07 06:57:23
   <br>
@@ -59,23 +58,21 @@ Stat Log Style
    INDEGREE_Send(B)#     |        0
    <br>
    
-Dependences
-======
+## Dependences
   <br>
   github.com/astaxie/beego/logs
   <br>
   original beego  still need to modify to support stat module
   <br>
   
-First Change
--------
+### First Change
    <br>
    add blankprefix support
    <br>
    modify logs/file.go as show below
    <br>
    
-#Json Config Support
+#### Json Config Support
 <br>
 ```golang
     type fileLogWriter struct {
@@ -86,7 +83,7 @@ First Change
 ```
 <br>
 
-#FileWriter Default BlankPrefix Support
+#### FileWriter Default BlankPrefix Support
 <br>
 ```golang
     func newFileWriter() Logger {
@@ -104,7 +101,7 @@ First Change
 ```
 <br>
 
-#Real Write Support
+#### Real Write Support
 <br>
 ```golang
        func (w *fileLogWriter) WriteMsg(when time.Time, msg string, level int)  error {
@@ -122,12 +119,11 @@ First Change
 ```
 <br>
 
-Second Change
-------
+### Second Change
 <br>
 Remove the logger level prefix in log line,such as [I],[D],...
 
-#BeeLogger Add Member attribute
+#### BeeLogger Add Member attribute
    <br>
    attribute blankPrefix
    <br>
@@ -147,7 +143,7 @@ Remove the logger level prefix in log line,such as [I],[D],...
         outputs             []*nameLogger
     }
 ```
-#BeeLogger Member Default Value
+#### BeeLogger Member Default Value
    <br>
    blankPrefix set default value
    <br>
@@ -168,14 +164,14 @@ Remove the logger level prefix in log line,such as [I],[D],...
 ```
 
 
-#BeeLogger Add Interface
+#### BeeLogger Add Interface
   <br>
 ```golang
     func (bl *BeeLogger) BlankPrefix() {
         bl.blankPrefix = true
     }
 ```
-#BeeLogger WriteMsg Modify
+#### BeeLogger WriteMsg Modify
    <br>
    clause msg = levelPrefix[logLevel] + msg add condition
 ```golang
@@ -213,9 +209,9 @@ Remove the logger level prefix in log line,such as [I],[D],...
 
 
 
-Using Help
-=====
-#Base Initialize
+## Using Help
+
+### Base Initialize
 <br>
 ```golang
 	logconfig := make(stat.LoggerParm)
@@ -230,12 +226,12 @@ Using Help
 	stat.Init(logconfig, 60)
 	stat.StatProc()
 ```
-#Application Initialize
+### Application Initialize
 ```golang
     stat.SetDelayUp(20,50,100)
 ```
 
-#Add Stat Record Data
+### Add Stat Record Data
 ```golang
     type StatItem struct {
 	  Name      string //统计的接口名
@@ -249,11 +245,11 @@ Using Help
 
     stat.Push(elem)
 ```
-#Exit Must Call
+### Exit Must Call
 ```golang
     stat.Exit()
 ```    
-#Already Include Stat Options
+### Already Include Stat Options
 ```golang
     const (
        STAT_IN			        = "MsgIn"
@@ -264,7 +260,7 @@ Using Help
        OUTDEGREE_Send			= "OutDegree_Send(MB)"
     )
 ```
-#User How to Add Stat Options
+### User How to Add Stat Options
    <br>
    user can add user define option and call interface below to tag itemName to Stat Module
  ```golang
