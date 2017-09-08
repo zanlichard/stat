@@ -4,7 +4,7 @@ About
 	golang application local business monitor
 	application can integrate stat module by follow directions
 Stat Log Style
-====
+-----
   <br>
   Statistic in 60s,  CTime: 2017-09-07 06:57:23
   <br>
@@ -58,12 +58,15 @@ Stat Log Style
    <br>
    INDEGREE_Send(B)#     |        0
    <br>
+   
 Dependences
-====
+======
+  <br>
   github.com/astaxie/beego/logs
   <br>
   original beego  still need to modify to support stat module
   <br>
+  
 First Change
 -------
    <br>
@@ -101,7 +104,7 @@ First Change
 #Real Write Support
 <br>
 ```golang
-       func (w *fileLogWriter) WriteMsg(when time.Time, msg string, level int)             error {
+       func (w *fileLogWriter) WriteMsg(when time.Time, msg string, level int)  error {
              if level > w.Level {
                 return nil
             }
@@ -111,13 +114,15 @@ First Change
            }else{
              msg = msg + "\n"
            }
-           .......
+	   ....
        }
 ```
 <br>
+
 Second Change
 ------
-		Remove the logger level prefix in log line,such as [I],[D],...
+<br>
+Remove the logger level prefix in log line,such as [I],[D],...
 
 #BeeLogger Add Member attribute
    <br>
@@ -206,7 +211,7 @@ Second Change
 
 
 Using Help
------
+=====
 #Base Initialize
 <br>
 ```golang
