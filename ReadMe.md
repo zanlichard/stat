@@ -1,11 +1,13 @@
 # Stat Manuals
-##About
+About
+====
 <br>
 golang application local business monitor
 <br>
 application can integrate stat module by follow directions
 <br>
-###Stat Log Style
+Stat Log Style
+====
 <font color=Green><br>
    Statistic in 60s,  CTime: 2017-09-07 06:57:23
    <br>
@@ -61,19 +63,21 @@ application can integrate stat module by follow directions
    <br>
 </font>
 <br>
-##Dependences
+Dependences
+====
   <br>
   github.com/astaxie/beego/logs
   <br>
   original beego  still need to modify to support stat module
   <br>
-###First Change
+First Change
+-------
    <br>
    add blankprefix support
    <br>
    modify logs/file.go as show below
    <br>
-####Json Config Support
+#Json Config Support#
 ```golang
     type fileLogWriter struct {
         sync.RWMutex
@@ -81,7 +85,7 @@ application can integrate stat module by follow directions
         BlankPrefix      bool `json:"blankprefix"`
     }
 ```
-####FileWriter Default BlankPrefix Support
+#FileWriter Default BlankPrefix Support#
 ```golang
     func newFileWriter() Logger {
         w := &fileLogWriter{
@@ -96,7 +100,7 @@ application can integrate stat module by follow directions
         return w
     }
 ```
-####Real Write Support
+#Real Write Support#
 ```golang
        func (w *fileLogWriter) WriteMsg(when time.Time, msg string, level int)             error {
              if level > w.Level {
@@ -111,11 +115,12 @@ application can integrate stat module by follow directions
            .......
        }
 ```
-###Second Change
+Second Change
+------
    <br>
    Remove the logger level prefix in log line,such as [I],[D],...
    <br>
-####BeeLogger Add Member attribute
+#BeeLogger Add Member attribute#
    <br>
    attribute blankPrefix
 ```golang
@@ -134,7 +139,7 @@ application can integrate stat module by follow directions
         outputs             []*nameLogger
     }
 ```
-####BeeLogger Member Default Value
+#BeeLogger Member Default Value#
    <br>
    blankPrefix set default value
 ```golang
@@ -154,13 +159,13 @@ application can integrate stat module by follow directions
 ```
 
 
-####BeeLogger Add Interface
+#BeeLogger Add Interface#
 ```golang
     func (bl *BeeLogger) BlankPrefix() {
         bl.blankPrefix = true
     }
 ```
-####BeeLogger WriteMsg Modify
+#BeeLogger WriteMsg Modify#
    <br>
    clause msg = levelPrefix[logLevel] + msg add condition
 ```golang
@@ -198,9 +203,10 @@ application can integrate stat module by follow directions
 
 
 
-##Using Help
+Using Help
+-----
 <br>
-###Base Initialize
+#Base Initialize#
 ```golang
 	logconfig := make(stat.LoggerParm)
 	logconfig.level = "info"
@@ -214,12 +220,12 @@ application can integrate stat module by follow directions
 	stat.Init(logconfig, 60)
 	stat.StatProc()
 ```
-###Application Initialize
+#Application Initialize#
 ```golang
     stat.SetDelayUp(20,50,100)
 ```
 
-###Add Stat Record Data
+#Add Stat Record Data#
 ```golang
     type StatItem struct {
 	  Name      string //统计的接口名
@@ -233,11 +239,11 @@ application can integrate stat module by follow directions
 
     stat.Push(elem)
 ```
-###Exit Must Call
+#Exit Must Call#
 ```golang
     stat.Exit()
 ```    
-###Already Include Stat Options
+#Already Include Stat Options#
 ```golang
     const (
        STAT_IN			        = "MsgIn"
@@ -248,7 +254,7 @@ application can integrate stat module by follow directions
        OUTDEGREE_Send			= "OutDegree_Send(MB)"
     )
 ```
-###User How to Add Stat Options
+#User How to Add Stat Options#
    <br>
    user can add user define option and call interface below to tag itemName to Stat Module
  ```golang
