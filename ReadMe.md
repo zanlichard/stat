@@ -1,7 +1,4 @@
 # Stat Manuals
-#目录
-[toc]
-
 ##About
   golang application local business monitor
   application can integrate stat module by follow directions
