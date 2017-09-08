@@ -74,16 +74,18 @@ First Change
    <br>
    modify logs/file.go as show below
    <br>
+   
 #Json Config Support
 <br>
 ```golang
     type fileLogWriter struct {
         sync.RWMutex
-        Filename   string `json:"filename"`
-        BlankPrefix      bool `json:"blankprefix"`
+        Filename         string `json:"filename"`
+        BlankPrefix      bool   `json:"blankprefix"`
     }
 ```
 <br>
+
 #FileWriter Default BlankPrefix Support
 <br>
 ```golang
