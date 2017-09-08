@@ -1,52 +1,87 @@
 # Stat Manuals
 ##About
-  golang application local business monitor
-  application can integrate stat module by follow directions
+<br>
+golang application local business monitor
+<br>
+application can integrate stat module by follow directions
+<br>
 ###Stat Log Style
-<font color=Green>
-   Statistic in 60s,  CTime: 2017-09-07 06:57:23
-   ---------------------
+<font color=Green><br>
+   Statistic in 60s,  CTime: 2017-09-07 06:57:23
+   <br>
+  ---------------------
+   <br>
    Head Information
+   <br>
    ---------------------
-                     |    MsgIn|   MsgOut
+   <br>
+                     |    MsgIn|   MsgOut 
+   <br>
    total:            |        0|        0
+   <br>
    count /1s:        |        0|        0
+   <br>
    ---------------------
-    Operation Information
+   <br>
+   Operation Information
+   <br>
    ---------------------
+   <br>
    Op                |  tcount|avg_de_ms|de_max_ms| max_ip|> 20(ms)|>   50(ms)|>100(ms)| 180(ms)|
-
+   <br>
    ---------------------
+   <br>
    Error Information
+   <br>
    ---------------------
+   <br>
    Op                | Err1        | Err2        | Err3        | Err4        |    Err5        | total count
+   <br>
    ---------------------
+   <br>
    TOTAL             | 0/0         | 0/0         | 0/0         | 0/0         | 0/0         | 0
+   <br>
    ---------------------
+   <br>
    IP Information
+   <br>
    ---------------------
+   <br>
    retcode           | ip1               | ip2               | ip3
+   <br>
    ---------------------
+   <br>
    Tail Information
+   <br>
    ---------------------
+   <br>
    INDEGREE_Recive(B)#   |        0
+   <br>
    INDEGREE_Send(B)#     |        0
+   <br>
 </font>
-
-
+<br>
 ##Dependences
+  <br>
   github.com/astaxie/beego/logs
+  <br>
   original beego  still need to modify to support stat module
+  <br>
 ###First Change
+   <br>
    add blankprefix support
+   <br>
    modify logs/file.go as show below
+   <br>
 ####Json Config Support
+```golang
     type fileLogWriter struct {
         sync.RWMutex
         Filename   string `json:"filename"`
         BlankPrefix      bool `json:"blankprefix"`
         ......
     }
+```
 ####FileWriter Default BlankPrefix Support
 ```golang
     func newFileWriter() Logger {
@@ -78,8 +113,11 @@
        }
 ```
 ###Second Change
+   <br>
    Remove the logger level prefix in log line,such as [I],[D],...
+   <br>
 ####BeeLogger Add Member attribute
+   <br>
    attribute blankPrefix
 ```golang
     type BeeLogger struct {
@@ -98,6 +136,7 @@
     }
 ```
 ####BeeLogger Member Default Value
+   <br>
    blankPrefix set default value
 ```golang
     func NewLogger(channelLens ...int64) *BeeLogger {
@@ -123,6 +162,7 @@
     }
 ```
 ####BeeLogger WriteMsg Modify
+   <br>
    clause msg = levelPrefix[logLevel] + msg add condition
 ```golang
     func (bl *BeeLogger) writeMsg(logLevel int, msg string, v ...interface{})         error {
@@ -160,7 +200,7 @@
 
 
 ##Using Help
-
+<br>
 ###Base Initialize
 ```golang
 	logconfig := make(stat.LoggerParm)
@@ -210,6 +250,7 @@
     )
 ```
 ###User How to Add Stat Options
+   <br>
    user can add user define option and call interface below to tag itemName to Stat Module
  ```golang
 	AddReportHeadItem(itemName string)
