@@ -1,68 +1,41 @@
 # Stat Manuals
 About
 ====
-<br>
-golang application local business monitor
-<br>
-application can integrate stat module by follow directions
-<br>
+	golang application local business monitor
+	application can integrate stat module by follow directions
 Stat Log Style
 ====
-<font color=Green><br>
-   Statistic in 60s,  CTime: 2017-09-07 06:57:23
-   <br>
-  ---------------------
-   <br>
-   Head Information
-   <br>
-   ---------------------
-   <br>
-                     |    MsgIn|   MsgOut 
-   <br>
-   total:            |        0|        0
-   <br>
-   count /1s:        |        0|        0
-   <br>
-   ---------------------
-   <br>
-   Operation Information
-   <br>
-   ---------------------
-   <br>
-   Op                |  tcount|avg_de_ms|de_max_ms| max_ip|> 20(ms)|>   50(ms)|>100(ms)| 180(ms)|
-   <br>
-   ---------------------
-   <br>
-   Error Information
-   <br>
-   ---------------------
-   <br>
-   Op                | Err1        | Err2        | Err3        | Err4        |    Err5        | total count
-   <br>
-   ---------------------
-   <br>
-   TOTAL             | 0/0         | 0/0         | 0/0         | 0/0         | 0/0         | 0
-   <br>
-   ---------------------
-   <br>
-   IP Information
-   <br>
-   ---------------------
-   <br>
-   retcode           | ip1               | ip2               | ip3
-   <br>
-   ---------------------
-   <br>
-   Tail Information
-   <br>
-   ---------------------
-   <br>
-   INDEGREE_Recive(B)#   |        0
-   <br>
-   INDEGREE_Send(B)#     |        0
-   <br>
-</font>
 <br>
+		<font color=Green>
+		Statistic in 60s,  CTime: 2017-09-07 06:57:23
+  		---------------------
+   		Head Information
+   		---------------------
+		<br>
+         	                  |    MsgIn|   MsgOut 
+   		total:            |        0|        0
+   		count /1s:        |        0|        0
+   		---------------------
+   		Operation Information
+   		---------------------
+   		Op                |  tcount|avg_de_ms|de_max_ms| max_ip|> 20(ms)|>   50(ms)|>100(ms)| 180(ms)|
+   		---------------------
+   		Error Information
+   		---------------------
+   		Op                | Err1        | Err2        | Err3        | Err4        |    Err5        | total count
+   		---------------------
+   		TOTAL             | 0/0         | 0/0         | 0/0         | 0/0         | 0/0         | 0
+   		---------------------
+   		IP Information
+   		---------------------
+   		retcode           | ip1               | ip2               | ip3
+   		---------------------
+   		Tail Information
+   		---------------------
+   		INDEGREE_Recive(B)#   |        0
+   		INDEGREE_Send(B)#     |        0
+		</font>
+	<br>
 Dependences
 ====
   <br>
@@ -77,7 +50,7 @@ First Change
    <br>
    modify logs/file.go as show below
    <br>
-#Json Config Support#
+#Json Config Support
 ```golang
     type fileLogWriter struct {
         sync.RWMutex
@@ -85,7 +58,7 @@ First Change
         BlankPrefix      bool `json:"blankprefix"`
     }
 ```
-#FileWriter Default BlankPrefix Support#
+#FileWriter Default BlankPrefix Support
 ```golang
     func newFileWriter() Logger {
         w := &fileLogWriter{
@@ -100,7 +73,7 @@ First Change
         return w
     }
 ```
-#Real Write Support#
+#Real Write Support
 ```golang
        func (w *fileLogWriter) WriteMsg(when time.Time, msg string, level int)             error {
              if level > w.Level {
@@ -120,7 +93,7 @@ Second Change
    <br>
    Remove the logger level prefix in log line,such as [I],[D],...
    <br>
-#BeeLogger Add Member attribute#
+#BeeLogger Add Member attribute
    <br>
    attribute blankPrefix
 ```golang
@@ -139,7 +112,7 @@ Second Change
         outputs             []*nameLogger
     }
 ```
-#BeeLogger Member Default Value#
+#BeeLogger Member Default Value
    <br>
    blankPrefix set default value
 ```golang
@@ -159,13 +132,13 @@ Second Change
 ```
 
 
-#BeeLogger Add Interface#
+#BeeLogger Add Interface
 ```golang
     func (bl *BeeLogger) BlankPrefix() {
         bl.blankPrefix = true
     }
 ```
-#BeeLogger WriteMsg Modify#
+#BeeLogger WriteMsg Modify
    <br>
    clause msg = levelPrefix[logLevel] + msg add condition
 ```golang
@@ -206,7 +179,7 @@ Second Change
 Using Help
 -----
 <br>
-#Base Initialize#
+#Base Initialize
 ```golang
 	logconfig := make(stat.LoggerParm)
 	logconfig.level = "info"
@@ -220,12 +193,12 @@ Using Help
 	stat.Init(logconfig, 60)
 	stat.StatProc()
 ```
-#Application Initialize#
+#Application Initialize
 ```golang
     stat.SetDelayUp(20,50,100)
 ```
 
-#Add Stat Record Data#
+#Add Stat Record Data
 ```golang
     type StatItem struct {
 	  Name      string //统计的接口名
@@ -239,11 +212,11 @@ Using Help
 
     stat.Push(elem)
 ```
-#Exit Must Call#
+#Exit Must Call
 ```golang
     stat.Exit()
 ```    
-#Already Include Stat Options#
+#Already Include Stat Options
 ```golang
     const (
        STAT_IN			        = "MsgIn"
@@ -254,7 +227,7 @@ Using Help
        OUTDEGREE_Send			= "OutDegree_Send(MB)"
     )
 ```
-#User How to Add Stat Options#
+#User How to Add Stat Options
    <br>
    user can add user define option and call interface below to tag itemName to Stat Module
  ```golang
