@@ -5,37 +5,59 @@ About
 	application can integrate stat module by follow directions
 Stat Log Style
 ====
-<br>
-Statistic in 60s,  CTime: 2017-09-07 06:57:23
-<br>
- ---------------------
-   	Head Information
-   	---------------------
-	<br>
-         	                  |    MsgIn|   MsgOut 
-   	total:            |        0|        0
-   	count /1s:        |        0|        0
-   	---------------------
-   	Operation Information
-   	---------------------
-   		Op                |  tcount|avg_de_ms|de_max_ms| max_ip|> 20(ms)|>   50(ms)|>100(ms)| 180(ms)|
-   		---------------------
-   		Error Information
-   		---------------------
-   		Op                | Err1        | Err2        | Err3        | Err4        |    Err5        | total count
-   		---------------------
-   		TOTAL             | 0/0         | 0/0         | 0/0         | 0/0         | 0/0         | 0
-   		---------------------
-   		IP Information
-   		---------------------
-   		retcode           | ip1               | ip2               | ip3
-   		---------------------
-   		Tail Information
-   		---------------------
-   		INDEGREE_Recive(B)#   |        0
-   		INDEGREE_Send(B)#     |        0
-
-	<br>
+  <br>
+  Statistic in 60s,  CTime: 2017-09-07 06:57:23
+  <br>
+  ---------------------
+  <br>
+  Head Information
+  <br>
+  ---------------------
+  <br>
+         	     |    MsgIn|   MsgOut 
+   <br>
+   total:            |        0|        0
+   <br>
+   count /1s:        |        0|        0
+   <br>
+   ---------------------
+   <br>
+   Operation Information
+   <br>
+   ---------------------
+   <br>
+   Op                |  tcount|avg_de_ms|de_max_ms| max_ip|> 20(ms)|>   50(ms)|>100(ms)| 180(ms)|
+   <br>
+   ---------------------
+   <br>
+   Error Information
+   <br>
+   ---------------------
+   <br>
+   Op                | Err1        | Err2        | Err3        | Err4        |    Err5        | total count
+   <br>
+   ---------------------
+   <br>
+   TOTAL             | 0/0         | 0/0         | 0/0         | 0/0         | 0/0         | 0
+   <br>
+   ---------------------
+   <br>
+   IP Information
+   <br>
+   ---------------------
+   <br>
+   retcode           | ip1               | ip2               | ip3
+   <br>
+   ---------------------
+   <br>
+   Tail Information
+   <br>
+   ---------------------
+   <br>
+   INDEGREE_Recive(B)#   |        0
+   <br>
+   INDEGREE_Send(B)#     |        0
+   <br>
 Dependences
 ====
   github.com/astaxie/beego/logs
