@@ -6,18 +6,18 @@ About
 Stat Log Style
 ====
 <br>
-		<font color=Green>
-		Statistic in 60s,  CTime: 2017-09-07 06:57:23
-  		---------------------
-   		Head Information
-   		---------------------
-		<br>
+Statistic in 60s,  CTime: 2017-09-07 06:57:23
+<br>
+ ---------------------
+   	Head Information
+   	---------------------
+	<br>
          	                  |    MsgIn|   MsgOut 
-   		total:            |        0|        0
-   		count /1s:        |        0|        0
-   		---------------------
-   		Operation Information
-   		---------------------
+   	total:            |        0|        0
+   	count /1s:        |        0|        0
+   	---------------------
+   	Operation Information
+   	---------------------
    		Op                |  tcount|avg_de_ms|de_max_ms| max_ip|> 20(ms)|>   50(ms)|>100(ms)| 180(ms)|
    		---------------------
    		Error Information
@@ -34,11 +34,10 @@ Stat Log Style
    		---------------------
    		INDEGREE_Recive(B)#   |        0
    		INDEGREE_Send(B)#     |        0
-		</font>
+
 	<br>
 Dependences
 ====
-  <br>
   github.com/astaxie/beego/logs
   <br>
   original beego  still need to modify to support stat module
@@ -51,6 +50,7 @@ First Change
    modify logs/file.go as show below
    <br>
 #Json Config Support
+<br>
 ```golang
     type fileLogWriter struct {
         sync.RWMutex
@@ -58,7 +58,9 @@ First Change
         BlankPrefix      bool `json:"blankprefix"`
     }
 ```
+<br>
 #FileWriter Default BlankPrefix Support
+<br>
 ```golang
     func newFileWriter() Logger {
         w := &fileLogWriter{
@@ -73,7 +75,9 @@ First Change
         return w
     }
 ```
+<br>
 #Real Write Support
+<br>
 ```golang
        func (w *fileLogWriter) WriteMsg(when time.Time, msg string, level int)             error {
              if level > w.Level {
@@ -88,14 +92,15 @@ First Change
            .......
        }
 ```
+<br>
 Second Change
 ------
-   <br>
-   Remove the logger level prefix in log line,such as [I],[D],...
-   <br>
+		Remove the logger level prefix in log line,such as [I],[D],...
+
 #BeeLogger Add Member attribute
    <br>
    attribute blankPrefix
+   <br>
 ```golang
     type BeeLogger struct {
         lock                sync.Mutex
@@ -115,6 +120,7 @@ Second Change
 #BeeLogger Member Default Value
    <br>
    blankPrefix set default value
+   <br>
 ```golang
     func NewLogger(channelLens ...int64) *BeeLogger {
          bl := new(BeeLogger)
@@ -133,6 +139,7 @@ Second Change
 
 
 #BeeLogger Add Interface
+  <br>
 ```golang
     func (bl *BeeLogger) BlankPrefix() {
         bl.blankPrefix = true
@@ -178,8 +185,8 @@ Second Change
 
 Using Help
 -----
-<br>
 #Base Initialize
+<br>
 ```golang
 	logconfig := make(stat.LoggerParm)
 	logconfig.level = "info"
