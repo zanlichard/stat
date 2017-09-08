@@ -162,6 +162,7 @@
 ##Using Help
 
 ###Base Initialize
+```golang
 	logconfig := make(stat.LoggerParm)
 	logconfig.level = "info"
 	logconfig.path = "./stat"
@@ -173,8 +174,11 @@
 	logconfig.chanlen = 10000
 	stat.Init(logconfig, 60)
 	stat.StatProc()
+```
 ###Application Initialize
+```golang
     stat.SetDelayUp(20,50,100)
+```
 
 ###Add Stat Record Data
 ```golang
@@ -187,11 +191,13 @@
 	  Direction int    //上行or下行          1 --- 上行   0 ----下行
 	  InOrOut   int    //入度请求还是出度请求  1 ---- in  0 ----out
     }
-```
-    stat.Push(elem)
-###Exit Must Call
-    stat.Exit()
 
+    stat.Push(elem)
+```
+###Exit Must Call
+```golang
+    stat.Exit()
+```    
 ###Already Include Stat Options
 ```golang
     const (
@@ -205,10 +211,11 @@
 ```
 ###User How to Add Stat Options
    user can add user define option and call interface below to tag itemName to Stat Module
-
+ ```golang
 	AddReportHeadItem(itemName string)
 	AddReportBodyRowItem(itemName string)
 	AddReportBodyColItem(itemName string)
 	AddReportTailItem(itemName string)
 	AddReportErrorItem(itemName string)
+```
 
