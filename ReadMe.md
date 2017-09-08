@@ -73,7 +73,7 @@
    <br>
    
 #### Json Config Support
-<br>
+
 ```golang
     type fileLogWriter struct {
         sync.RWMutex
@@ -84,7 +84,7 @@
 <br>
 
 #### FileWriter Default BlankPrefix Support
-<br>
+
 ```golang
     func newFileWriter() Logger {
         w := &fileLogWriter{
@@ -102,7 +102,7 @@
 <br>
 
 #### Real Write Support
-<br>
+
 ```golang
        func (w *fileLogWriter) WriteMsg(when time.Time, msg string, level int)  error {
              if level > w.Level {
@@ -124,7 +124,7 @@
 Remove the logger level prefix in log line,such as [I],[D],...
 
 #### BeeLogger Add Member attribute
-   <br>
+   
    attribute blankPrefix
    <br>
 ```golang
@@ -144,7 +144,7 @@ Remove the logger level prefix in log line,such as [I],[D],...
     }
 ```
 #### BeeLogger Member Default Value
-   <br>
+   
    blankPrefix set default value
    <br>
 ```golang
@@ -165,15 +165,17 @@ Remove the logger level prefix in log line,such as [I],[D],...
 
 
 #### BeeLogger Add Interface
-  <br>
+
 ```golang
     func (bl *BeeLogger) BlankPrefix() {
         bl.blankPrefix = true
     }
 ```
+<br>
 #### BeeLogger WriteMsg Modify
-   <br>
+   
    clause msg = levelPrefix[logLevel] + msg add condition
+   <br>
 ```golang
     func (bl *BeeLogger) writeMsg(logLevel int, msg string, v ...interface{})         error {
         if !bl.init {
@@ -207,7 +209,7 @@ Remove the logger level prefix in log line,such as [I],[D],...
      }
 ```
 
-
+<br>
 
 ## Using Help
 
