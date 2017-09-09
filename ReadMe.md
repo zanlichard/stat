@@ -256,10 +256,10 @@ Remove the logger level prefix in log line,such as [I],[D],...
     const (
        STAT_IN			        = "MsgIn"
        STAT_OUT				    = "MsgOut"
-       INDEGREE_Recive 		    = "InDegree_Recive(MB)"
-       INDEGREE_Send			= "InDegree_Send(MB)"
-       OUTDEGREE_Recive 		= "OutDegree_Recive(MB)"
-       OUTDEGREE_Send			= "OutDegree_Send(MB)"
+       INDEGREE_Recive 		    = "InDegree_Recive(B)"
+       INDEGREE_Send			= "InDegree_Send(B)"
+       OUTDEGREE_Recive 		= "OutDegree_Recive(B)"
+       OUTDEGREE_Send			= "OutDegree_Send(B)"
     )
 ```
 ### User How to Add Stat Options
