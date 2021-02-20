@@ -1,10 +1,9 @@
 package stat
 
 import (
-   "testing"
-   "time"
+	"testing"
+	"time"
 )
-
 
 func TestStat(t *testing.T) {
 	logconfig := new(LoggerParam)
@@ -19,7 +18,7 @@ func TestStat(t *testing.T) {
 	Init(*logconfig, 20)
 	SetDelayUp(20, 50, 100)
 	StatProc()
-        time.Sleep(21*time.Second)
+	time.Sleep(21 * time.Second)
 	//stat.SendStatItem(elem)
 	Exit()
 

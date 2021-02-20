@@ -8,6 +8,9 @@ import (
 
 // Convert net.IP to int
 func inet_aton(ipnr net.IP) int {
+	if len(ipnr) <= 0 {
+		return 0
+	}
 	bits := strings.Split(ipnr.String(), ".")
 
 	b0, _ := strconv.Atoi(bits[0])
